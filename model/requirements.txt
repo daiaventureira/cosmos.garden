@@ -1,0 +1,6 @@
+lxml
+requests
+tqdm
+ipython
+pandas
+numpy

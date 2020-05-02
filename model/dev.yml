@@ -1,0 +1,12 @@
+name: horoscope
+
+type: python
+
+up:
+  - python: 2.7.13
+  - pip:
+    - requirements.txt
+commands:
+  crawler:
+    desc: "Run crawler"
+    run: python -m crawler.crawler
