@@ -1,0 +1,84 @@
+*.py[cod]
+
+# Cache directory
+.cache/
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+/build
+eggs
+parts
+var
+sdist
+develop-eggs
+.installed.cfg
+lib64
+@test*
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+.pytest_cache
+
+# Translations
+*.mo
+
+# Virtualenv
+.venv
+
+# vim swap files
+*.swp
+
+# emacs directory configuration
+.dir-locals.el
+
+# Ensime settings (scala)
+scala/ensime.sbt
+
+# osx custom attributes file
+.DS_Store
+
+# pip sometimes makes a src dir for some reason
+src/*
+
+# ignore Sublime project files
+*sublime-project
+*sublime-workspace
+
+*.orig
+
+# Notebooks
+notebooks/workspace/*
+!notebooks/workspace/tutorials
+notebooks/migrated
+notebooks/runtime
+notebooks/.ipynb_checkpoints/*
+notebooks/workspace/tutorials/.ipynb_checkpoints/*
+notebooks/nbsignatures.db
+notebooks/notebook_secret
+.dev
+
+# IntelliJ projects
+*.iml
+
+# Visual Studio Code files
+.vscode/*
+
+# ignore mypy folders
+.mypy_cache/
+stubs/
+
+# ignore plaintext
+*.plaintext
+
+# ignore data folder
+model/data/*.csv
