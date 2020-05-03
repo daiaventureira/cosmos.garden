@@ -1,9 +1,19 @@
-$white-borders:.1px solid #ffffff;
+$orange-colour: #ca9b5f;
+$white-borders:1px solid #ffffff;
+$orange-borders: 1px solid $orange-colour;
+$nr: 15; // number of rays
+$p: 50%/$nr; 
 
 %borders{
     border: $white-borders;
 }
-
+%circles{
+    position:absolute;
+    height: 1em;
+    width:1em;
+    background-color: $orange-colour;
+    border-radius: 50%;
+}
 %outside-margins{
     position: absolute;
     width: 1px;
@@ -11,7 +21,6 @@ $white-borders:.1px solid #ffffff;
     top: 40px; 
 }
 %diagonals{
-    position: absolute;
     width: 1px;
     height: 30em;
     top:-15px;
@@ -26,6 +35,7 @@ html{
 }
 body{
     background-color: #20203c;
+    height: 100%;
 }
 .main-margins{
     position: absolute;
@@ -40,25 +50,6 @@ body{
     flex-direction: column;
     justify-content: center;
     @extend %borders;
-
-    &:before, &:after {
-        content: "";
-        position: absolute;
-        width: 65%;
-        height: 1em;
-        display: block;
-        top:calc(-1em + 1px);
-        left:0;
-        right: 0;
-        margin: auto;
-        border:$white-borders;
-    }
-
-    &:after{
-        top:auto;
-        bottom: calc(-1em + 1px);
-
-    }
 }
 .diamond-shape {
     @extend %borders;
@@ -76,18 +67,168 @@ body{
         display: block;
         padding-bottom: 100%;
     } 
-}  
-
+}
 .outside-margin-left{
     @extend %outside-margins;
-    border-left: $white-borders;
+    border-left: $orange-borders;
+    
     left: -20px;
 }
 .outside-margin-right{
     @extend %outside-margins;
-    border-right: $white-borders;
+    border-right: $orange-borders;
     right:-20px;
 }
+.bar-top, .bar-bottom{ 
+        content: "";
+        position: absolute;
+        width: 65%;
+        height: 1em;
+        display: block;
+        top:calc(-1em - 2px);
+        left:0;
+        right: 0;
+        margin: auto;
+        border:$orange-borders; 
+
+       
+        &:before, &:after {
+            content: "";
+            position: absolute;
+            width: 45%;
+            height: 1em;
+            display: block;
+            top: calc(-1em - 2px);
+            left:0;
+            right: 0;
+            margin: auto;
+            border:$white-borders;
+            border-bottom-color:$orange-colour;
+        }
+    
+        &:after{
+            top:auto;
+            bottom: calc(-1em - 2px);
+            border-top-color:$orange-colour;
+            border-bottom-color:white;
+        }
+    }
+.bar-bottom{
+    top:auto;
+    bottom: calc(-1em - 2px);
+}
+.circles-top-left{
+    @extend %circles;
+    top: 7px;
+    left: 7px;
+}
+.circles-top-right{
+    @extend %circles;
+    top: 9px;
+    right: 5px;
+}
+.circles-bottom-left{
+    @extend %circles;
+    bottom: 9px;
+    left: 5px;
+}
+.circles-bottom-right{
+    @extend %circles;
+    bottom: 9px;
+    right: 5px;
+}
+.star-sign{
+    margin:0;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-right:-50%;
+    transform: translate(-50%, -50%);
+    color: $orange-colour;
+    font-size: 2rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+.horoscope-of-day{
+    position: absolute;
+    top: 70%;
+    color:white;
+    width: 60ch;
+    left:50%;
+    margin-right:-50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size:20px;
+    font-family:Helvetica, sans-serif, sans-serif;
+
+}
+
+
+// .line1-top-left{
+//     position: absolute;
+//     width: 1px;
+//     height: 3em;
+//     background-color: white;
+//     top:-16px;
+//     left:51px;
+//     transform: rotate(-100deg);
+// }
+// .line2-top-left{
+//     position: absolute;
+//     width: 1px;
+//     height: 8em;
+//     background-color: white;
+//     top:-9px;
+//     transform: rotate(100deg);
+//     left:60px;
+    
+// }
+// .line3-top-left{
+//     position: absolute;
+//     width: 1px;
+//     height: 4em;
+//     background-color: white;
+//     top:6px;
+//     transform: rotate(119deg);
+//     left:55px;
+// }
+// .line4-top-left{
+//     position: absolute;
+//     width: 1px;
+//     height: 6em;
+//     background-color: $orange-colour;
+//     top:20px;
+//     transform: rotate(145deg);
+//     left:52px;
+// }
+// .line5-top-left{
+//     position: absolute;
+//     width: 1px;
+//     height: 5em;
+//     background-color: white;
+//     top:33px;
+//     left:35px;
+//     transform: rotate(160deg);
+// }
+// .line6-top-left{
+//     position: absolute;
+//     width: 1px;
+//     height: 4.5em;
+//     background-color: white;
+//     top:37px;
+//     transform: rotate(176deg);
+//     left:18px;
+    
+// }
+// .line7-top-left{
+//     position: absolute;
+//     width: 1px;
+//     height: 3em;
+//     background-color: white;
+//     top:38px;
+//     transform: rotate(190deg);
+//     left:8px;
+// }
 
 
 
