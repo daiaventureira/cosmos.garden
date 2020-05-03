@@ -57,14 +57,14 @@ src/*
 *.orig
 
 # Notebooks
-notebooks/workspace/*
-!notebooks/workspace/tutorials
-notebooks/migrated
-notebooks/runtime
-notebooks/.ipynb_checkpoints/*
-notebooks/workspace/tutorials/.ipynb_checkpoints/*
-notebooks/nbsignatures.db
-notebooks/notebook_secret
+model/notebooks/workspace/*
+model/!notebooks/workspace/tutorials
+model/notebooks/migrated
+model/notebooks/runtime
+model/notebooks/.ipynb_checkpoints/*
+model/notebooks/workspace/tutorials/.ipynb_checkpoints/*
+model/notebooks/nbsignatures.db
+model/notebooks/notebook_secret
 .dev
 
 # IntelliJ projects
