@@ -10,3 +10,9 @@ commands:
   crawler:
     desc: "Run crawler"
     run: python -m crawler.crawler
+  data_clean:
+    desc: "Run data cleaner"
+    run: python -m data_products.data_clean
+  nb:
+    desc: "Run jupyter notebooks"
+    run: jupyter notebook
