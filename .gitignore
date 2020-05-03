@@ -19,6 +19,8 @@ develop-eggs
 .installed.cfg
 lib64
 @test*
+model/models/*.h5
+model/models/*.json
 
 # Installer logs
 pip-log.txt
