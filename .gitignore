@@ -1,5 +1,9 @@
 *.py[cod]
 
+# TODO: check right way of deploying the model
+public/model
+src/assets/*.json
+
 # Cache directory
 .cache/
 
