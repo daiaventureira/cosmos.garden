@@ -5,9 +5,10 @@ export default class Model {
     TOKENS_BEFORE_PREDICTION = 19;
     TOKENS_PREDICTED = 1;
 
-    constructor(predicted_size = 30) {
+    constructor(predicted_size = 30, loading_phrase = 'Loading...') {
         this.model = null;
         this.predicted_size = predicted_size;
+        this.loading_phrase = loading_phrase;
 
         this.ENCODING_DICT = {};
         this.DECODING_DICT = {};
@@ -31,15 +32,18 @@ export default class Model {
     }
 
     argmax(sequence) {
-        return Array.from(sequence)
+        return Array
+            .from(sequence)
             .map((value, index) => [value, index])
             .reduce((x, y) => x[0] > y[0] ? x : y)[1];
     }
 
-    predict(seed) {
+    predict(star_sign) {
         if (this.model === null) {
-            return 'Loading...';
+            return this.loading_phrase;
         }
+
+        const seed = 'Today you will';
 
         const tokenized_text = seed.split(' ').map(word => this.ENCODING_DICT[word]);
         const PREDICT_UNTIL = this.predicted_size + tokenized_text.length;
