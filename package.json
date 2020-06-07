@@ -34,6 +34,7 @@
     ]
   },
   "devDependencies": {
-    "yarn": "^1.22.4"
+    "yarn": "^1.22.4",
+    "@svgr/webpack": "^5.4.0"
   }
 }

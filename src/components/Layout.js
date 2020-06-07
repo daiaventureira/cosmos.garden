@@ -1,32 +1,47 @@
 import React from 'react';
 import index from './index.scss';
+import Controller from './Controller'
+import { ReactComponent as Star} from '../assets/star.svg';
+ 
+class Layout extends React.Component{
 
-const Layout = props => {
-    return(
-    <div className="container">
-
-        <div className="main-margins">
-            <div className="star-sign">{props.text}</div>
-            <div className="horoscope-of-day"><p>{props.horoscopeOfDay}</p></div>
-            <div className="circles-top-left"></div>
-            <div className="circles-top-right"></div>  
-            <div className="circles-bottom-left"></div>
-            <div className="circles-bottom-right"></div>  
-            <div className="line1-top-left"></div>
-            <div className="line2-top-left"></div>
-            <div className="line3-top-left"></div>     
-            <div className="line4-top-left"></div> 
-            <div className="line5-top-left"></div>                   
-            <div className="line6-top-left"></div>                   
-            <div className="line7-top-left"></div>                   
-            <div className="bar-top"></div>
-            <div className="bar-bottom"></div>
-            <div className="diamond-shape"></div>
-            <div className="outside-margin-right"></div>
-            <div className="outside-margin-left"></div> 
-        </div>
-    </div>
-    )
+    render(){
+        return(
+            <div className="container">
+                <div className="main-margins">
+                    <div className="space-ray tl"></div>
+                    <div className="space-ray tr"></div>
+                    <div className="space-ray bl"></div>
+                    <div className="space-ray br"></div>
+    
+                    <div className="star-david tl">
+                        <Star />
+                    </div>
+                    <div className="star-david tr">
+                        <Star />
+                    </div>
+                    <div className="star-david bl">
+                        <Star />
+                    </div>
+                    <div className="star-david br">
+                        <Star />
+                    </div> 
+                    <div>
+                        <Controller
+                            horoscopeOfDay = "it might be increasingly difficult to remain quiet about a particular matter you've been keeping to yourself or possibly feel strongly about you could be aware of the proverbial can of worms you'll open by instigating a particular conversation however you're only adding to your own stress levels by opting to say nothing if truth forms the basis of what you want to say then you have nothing to fear"
+                        />
+                    </div>   
+                     
+                    <div className="circles-top-left"></div>
+                    <div className="inside-margin-left"></div>      
+                    <div className="bar-top"></div>
+                    <div className="bar-bottom"></div>
+                    <div className="outside-margin-right"></div>
+                    <div className="outside-margin-left"></div> 
+                </div>
+            </div>
+        );    
+}
 }
 
 export default Layout;

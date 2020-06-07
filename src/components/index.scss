@@ -1,19 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,300&display=swap');
+
 $orange-colour: #ca9b5f;
 $white-borders:1px solid #ffffff;
 $orange-borders: 1px solid $orange-colour;
-$nr: 15; // number of rays
-$p: 50%/$nr; 
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#root {
+    height: 100vh;
+    width: 100vw;
+}
+
+html{
+    width:100%;
+    height: 100%;
+}
+
+body {
+    background-image: url(/assets/starsPattern.svg);
+    background-size: 20%;
+    background-color: #20203c;
+    height: 100%;
+    font-family: 'Josefin Sans', sans-serif;
+}
 
 %borders{
     border: $white-borders;
 }
-%circles{
-    position:absolute;
-    height: 1em;
-    width:1em;
-    background-color: $orange-colour;
-    border-radius: 50%;
-}
+
 %outside-margins{
     position: absolute;
     width: 1px;
@@ -25,19 +42,16 @@ $p: 50%/$nr;
     height: 30em;
     top:-15px;
 }
-*{
-    padding: 0;
-    margin: 0;
+
+.container {
+    position: relative;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
-html{
-    width:100%;
-    height: 100%;
-}
-body{
-    background-color: #20203c;
-    height: 100%;
-}
-.main-margins{
+
+.main-margins {
     position: absolute;
     width: 70%;
     height: 40em;
@@ -46,22 +60,38 @@ body{
     left:0;
     right:0;
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     @extend %borders;
 }
 .diamond-shape {
     @extend %borders;
+    
     position: relative;
-    width: 100%;
+    width: 70%;
     transform: rotate(45deg);
     left: 0;
-    top: 0;
+    top: -130px;
     right: 0;
     bottom: 0;
     margin: auto; 
+
+    &:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    } 
+}
+.diamond-shape-gold {
+    border:$orange-borders;
     
+    position: relative;
+    width: 95%;
+    transform: rotate(45deg);
+    left: 0;
+    top: -590px;
+    right: 0;
+    bottom: 0;
+    margin: auto; 
+
     &:after {
         content: "";
         display: block;
@@ -70,14 +100,18 @@ body{
 }
 .outside-margin-left{
     @extend %outside-margins;
-    border-left: $orange-borders;
-    
+    border-left: $orange-borders;   
     left: -20px;
 }
 .outside-margin-right{
     @extend %outside-margins;
     border-right: $orange-borders;
     right:-20px;
+}
+.inside-margin-left{
+    @extend %outside-margins;
+    border-right: $orange-colour;
+    left: -30px;
 }
 .bar-top, .bar-bottom{ 
         content: "";
@@ -117,47 +151,134 @@ body{
     top:auto;
     bottom: calc(-1em - 2px);
 }
-.circles-top-left{
-    @extend %circles;
-    top: 7px;
-    left: 7px;
-}
-.circles-top-right{
-    @extend %circles;
-    top: 9px;
-    right: 5px;
-}
-.circles-bottom-left{
-    @extend %circles;
-    bottom: 9px;
-    left: 5px;
-}
-.circles-bottom-right{
-    @extend %circles;
-    bottom: 9px;
-    right: 5px;
-}
+
 .star-sign{
-    margin:0;
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin-right:-50%;
-    transform: translate(-50%, -50%);
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
     color: $orange-colour;
-    font-size: 2rem;
-    font-family: sans-serif;
+    font-size: 3.5rem;
     text-transform: uppercase;
+    font-weight: 300;
 }
 .horoscope-of-day{
-    position: absolute;
-    top: 70%;
+    position: relative;
     color:white;
-    width: 60ch;
-    left:50%;
-    margin-right:-50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    font-size:20px;
-    font-family:Helvetica, sans-serif, sans-serif;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 95;
+    line-height: 1.9rem;
+    letter-spacing: 1px;
+
+    &:before{
+        position: absolute;
+        content: '\201C';
+        top: 0.25em;
+        left: -0.25em;
+        font-size: 17em;
+        font-family: sans-serif;
+        color: #ca9b5f;
+        opacity: 0.6;
+        z-index: -1;
+
+    }
+}
+
+.star-sign-symbol {   
+    width: 15%;
+    margin: 10% auto 0 auto;
+    fill:#ffffff;
+
+    .highlighting {
+        fill:$orange-colour;
+    }
+}
+
+.star-david{
+    $size: 4em;
+
+    fill:#ffffff;
+    width: $size;
+    height: $size;
+    color: $orange-colour;
+    position: absolute;
+
+    &.tl {
+        top: $size / -2;
+        left: $size / -2;
+    }
+
+    &.tr {
+        top: $size / -2;
+        right: $size / -2;
+    }
+
+    &.bl {
+        bottom: $size / -2;
+        left: $size / -2;
+    }
+
+    &.br {
+        bottom: $size / -2;
+        right: $size / -2;
+    }
+
+    .highlighting {
+        fill:$orange-colour;
+    }
+}
+
+.space-ray {
+    $width: 100vw;
+    $height: 14em;
+
+    border-top: $white-borders;
+    border-bottom: $orange-borders;
+    height: $height;
+    width: $width;
+    position: absolute;
+    box-sizing: border-box;
+
+    &.tl {
+        left: $width / -2;
+        top: $height / -2;
+        transform: rotate(-45deg);
+    }
+
+    &.tr {
+        right: $width / -2;
+        top: $height / -2;
+        transform: rotate(45deg);
+    }
+
+    &.bl {
+        left: $width / -2;
+        bottom: $height / -2;
+        transform: rotate(-135deg);
+    }
+
+    &.br {
+        right: $width / -2;
+        bottom: $height / -2;
+        transform: rotate(135deg);
+    }
+}
+
+.arrow{
+    position: absolute;
+    width:10em;
+    top:46%;
+    left:10em;
+    fill: #ffffff;
+}
+.arrow-right{
+    position: absolute;
+    width:10em;
+    top:46%;
+    right:10em;
+    fill: #ffffff;
+    transform: rotate(180deg);
 }
