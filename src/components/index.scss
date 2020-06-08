@@ -18,7 +18,6 @@ html{
     width:100%;
     height: 100%;
 }
-
 body {
     background-image: url(/assets/starsPattern.svg);
     background-size: 20%;
@@ -26,7 +25,6 @@ body {
     height: 100%;
     font-family: 'Josefin Sans', sans-serif;
 }
-
 %borders{
     border: $white-borders;
 }
@@ -42,7 +40,6 @@ body {
     height: 30em;
     top:-15px;
 }
-
 .container {
     position: relative;
     display: block;
@@ -50,7 +47,6 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-
 .main-margins {
     position: absolute;
     width: 70%;
@@ -125,7 +121,6 @@ body {
         margin: auto;
         border:$orange-borders; 
 
-       
         &:before, &:after {
             content: "";
             position: absolute;
@@ -152,16 +147,6 @@ body {
     bottom: calc(-1em - 2px);
 }
 
-.star-sign{
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 1em 0;
-    color: $orange-colour;
-    font-size: 3.5rem;
-    text-transform: uppercase;
-    font-weight: 300;
-}
 .horoscope-of-day{
     position: relative;
     color:white;
@@ -172,6 +157,7 @@ body {
     font-weight: 95;
     line-height: 1.9rem;
     letter-spacing: 1px;
+    user-select: none;
 
     &:before{
         position: absolute;
@@ -189,7 +175,7 @@ body {
 
 .star-sign-symbol {   
     width: 15%;
-    margin: 10% auto 0 auto;
+    margin: 7% auto 0 auto;
     fill:#ffffff;
 
     .highlighting {
@@ -267,18 +253,166 @@ body {
     }
 }
 
-.arrow{
-    position: absolute;
-    width:10em;
-    top:46%;
-    left:10em;
-    fill: #ffffff;
+.star-sign-name {
+    width: 100%;
+    padding: 3em 0;
+    display: flex;
+    justify-content: center;
+
+    & > div {
+        display: flex;
+        align-items: center;
+    }
 }
-.arrow-right{
-    position: absolute;
-    width:10em;
-    top:46%;
-    right:10em;
-    fill: #ffffff;
-    transform: rotate(180deg);
+
+.star-sign{
+    display: inline-block;
+    // width: 100%;
+    color: $orange-colour;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    user-select: none;
+    padding: 0 1em;
+}
+
+.arrow {
+    display: inline-block;
+    cursor: pointer;
+    transform: scaleX(-1);
+    fill: none;
+    stroke: white;
+    transform-origin: center center;
+    stroke-width: 5;
+    width: 4rem;
+    max-height: 5.5rem;
+
+    &:hover {
+        stroke: $orange-colour;
+    }
+
+    &.right {
+        transform: scaleX(1);
+    }
+}
+ 
+@media only screen  and (max-width:375px) and (max-height: 667px){
+    .star-sign-symbol {   
+        width: 50%;
+        margin: 20% auto 0 auto;    
+    }
+    .star-sign-name {
+        padding: 1.5em 0;
+    }
+    .star-sign{
+        font-size: 1.3rem; 
+        padding: 0 1em;
+    }  
+    .arrow { 
+        width: 2rem;
+        max-height: 5.5rem;
+    }
+    .horoscope-of-day{
+        width: 90%;
+        font-size: 1rem;
+        line-height: 1.3rem;
+        letter-spacing: 1px;
+    
+        &:before{
+            top: 0.25em;
+            left: 0.10em;
+            font-size: 5.7em;          
+        }
+    }
+}
+@media only screen and (max-width:415px) and (max-height: 812px){
+    .star-sign-symbol {   
+        width: 30%;
+        margin: 20% auto 0 auto;    
+    }
+    .star-sign-name {
+        padding: 1.6em 0;
+    }
+    .star-sign{
+        font-size: 1.4rem; 
+        padding: 0 1em;
+    }  
+    .arrow { 
+        width: 2rem;
+        max-height: 5.5rem;
+    }
+    .horoscope-of-day{
+        width: 85%;
+        font-size: 0.9rem;
+        line-height: 1.3rem;
+
+        &:before{
+            top: 0.25em;
+            left: -0.15em;
+            font-size: 5.7em;          
+        }
+    }
+}
+@media only screen and (max-width:1024px) and (min-width: 768px) and (max-height:1370px) and (min-height: 1000px){
+    .star-sign-symbol {   
+        width: 20%;
+        margin: 10% auto 0 auto;    
+    }
+    .star-sign-name {
+        padding: 1.6em 0;
+    }
+    .star-sign{
+        font-size: 2.9rem; 
+        padding: 0 1em;
+    }  
+    .arrow { 
+        width: 4rem;
+        max-height: 5.5rem;
+    }
+    .horoscope-of-day{
+        width: 75%;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+
+        &:before{
+            top: 0.25em;
+            left: -0.15em;
+            font-size: 5.7em;          
+        }
+    }
+    .space-ray {
+        $width: 125vw;
+        $height: 15em;
+    
+        border-top: $white-borders;
+        border-bottom: $orange-borders;
+        height: $height;
+        width: $width;
+        position: absolute;
+        box-sizing: border-box;
+    
+        &.tl {
+            left: $width / -2;
+            top: $height / -2;
+            transform: rotate(-45deg);
+        }
+    
+        &.tr {
+            right: $width / -2;
+            top: $height / -2;
+            transform: rotate(45deg);
+        }
+    
+        &.bl {
+            left: $width / -2;
+            bottom: $height / -2;
+            transform: rotate(-135deg);
+        }
+    
+        &.br {
+            right: $width / -2;
+            bottom: $height / -2;
+            transform: rotate(135deg);
+        }
+    }
 }
