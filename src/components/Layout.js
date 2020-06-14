@@ -27,8 +27,7 @@ class Layout extends React.Component{
                         <Star />
                     </div> 
                     <div>
-                        <Controller
-                        />
+                        <Controller messages={this.props.messages}/>
                     </div>   
                      
                     <div className="circles-top-left"></div>
