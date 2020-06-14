@@ -25,7 +25,6 @@ class Controller extends Component{
         this.clickLeftBottom =  this.clickLeftBottom.bind(this);
         this.nameList = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces' ];
         this.signList = [ <Aries/>, <Taurus />, < Gemini />, <Cancer />, <Leo />, <Virgo />, <Libra />, <Scorpio />, <Sagittarius />, <Capricorn />, <Aquarius />, <Pisces />];
-        this.messages = Array(12).fill("loading");
     }
 
     clickRightBottom(){
@@ -73,7 +72,7 @@ class Controller extends Component{
                     </div>
                 </div>
                 <div>
-                <div  className="horoscope-of-day"><blockquote>{this.messages[this.state.counter - 1]}</blockquote></div>
+                <div  className="horoscope-of-day"><blockquote>{this.props.messages[this.state.counter - 1]}</blockquote></div>
                 </div>
             </div>
         );          
