@@ -37,34 +37,36 @@ export default class Model {
         }
     }
 
+    available() {
+        return this.model !== null;
+    }
+
     async load() {
         this.model = await tf.loadLayersModel('./model/model.json', {strict: false});
     }
 
-    pad_sequences(sequence) {
-        const zeros = Array(this.TOKENS_BEFORE_PREDICTION).fill(0);
-        const padded = zeros.concat(sequence);
-        return tf.tensor(padded.slice(padded.length - this.TOKENS_BEFORE_PREDICTION));
+    predict() {
+        return tf.tidy(() => this._predict());
     }
 
-    argmax(sequence) {
-        return Array
-            .from(sequence)
-            .map((value, index) => [value, index])
-            .reduce((x, y) => x[0] > y[0] ? x : y)[1];
-    }
-
-    predict(star_sign) {
+    _predict() {
         if (this.model === null) {
-            return this.loading_phrase;
+            return Array(12).fill(this.loading_phrase);
         }
 
-        const seed = 'Today you will';
+        const seed = 'today you will';
 
-        const star_sign_ohe = tf.zeros([12]);
-        star_sign_ohe[star_sign] = 1;
+        let star_sign_ohe = [];
 
-        const date_feats = tf.tensor([
+        for (let i = 0; i < 12; i++) {
+            const z = Array(12).fill(0);
+            z[i] = 1;
+            star_sign_ohe.push(z);
+        }
+
+        star_sign_ohe = tf.tensor(star_sign_ohe);
+
+        let date_feats = tf.tensor([
             this.year,
             this.cos_mon,
             this.sin_mon,
@@ -72,24 +74,61 @@ export default class Model {
             this.sin_day
         ]);
 
-        const static_feats = tf.concat([date_feats, star_sign_ohe]).reshape([1, -1]);
+        date_feats = tf
+            .tile(date_feats, [12])
+            .reshape([12, -1]);
 
+        const static_feats = tf.concat([date_feats, star_sign_ohe], 1);
+
+        let tokenized_text = seed.split(' ').map(word => this.ENCODING_DICT[word]);
+        let tokens_so_far = tokenized_text.length;
+
+        tokenized_text = tf.tensor(tokenized_text);
+        tokenized_text = tokenized_text.pad([[this.TOKENS_BEFORE_PREDICTION, 0]]);
+        tokenized_text = tokenized_text.tile([12]).reshape([12, -1]);
+
+        const PREDICT_UNTIL = this.predicted_size + tokens_so_far;
         this.model.resetStates();
 
-        const tokenized_text = seed.split(' ').map(word => this.ENCODING_DICT[word]);
-        const PREDICT_UNTIL = this.predicted_size + tokenized_text.length;
+        while (tokens_so_far < PREDICT_UNTIL) {
+            let piece = tokenized_text
+                .slice([0, tokenized_text.shape[1] - this.TOKENS_BEFORE_PREDICTION], [12, -1]);
 
-        while (tokenized_text.length < PREDICT_UNTIL) {
-            const padded = this.pad_sequences(tokenized_text).reshape([1, -1]);
+            const output = this.model
+                .predict([piece, static_feats])
+                .slice([0, this.TOKENS_BEFORE_PREDICTION - 1, 0], [12, 1, -1])
+                .squeeze();
 
-            const output = this.model.predict([padded, static_feats]).dataSync();
-            const reshaped_output = tf.tensor(output).reshape([this.TOKENS_BEFORE_PREDICTION, -1]);
+            const prediction = tf.multinomial(output, 1);
 
-            const predicted_id = tf.multinomial(reshaped_output, 1).dataSync().slice(-1)[0];
+            tokenized_text = tokenized_text.concat(prediction, 1);
 
-            tokenized_text.push(predicted_id);
+            piece.dispose();
+            output.dispose();
+            prediction.dispose();
+
+            tokens_so_far++;
         }
 
-        return tokenized_text.map(code => this.DECODING_DICT[code]).join(' ');
+        const sequences = Array.from(
+            tokenized_text
+                .slice([0, tokenized_text.shape[1] - PREDICT_UNTIL], [12, -1])
+                .dataSync()
+        );
+
+        const messages = []
+
+        for (let i = 0; i < 12; i ++) {
+            const j = sequences.length / 12;
+
+            const message = sequences
+                .slice(i * j, i * j + j)
+                .map(code => this.DECODING_DICT[code])
+                .join(' ');
+
+            messages.push(message);
+        }
+
+        return messages;
     }
 }

@@ -18,5 +18,5 @@ commands:
     run: jupyter notebook
   tfjs:
     desc: "Convert to tfsj"
-    run: tensorflowjs_converter --input_format keras ./models/$@.h5 ../public/model/ && cp ./models/$@.json ../src/assets/dictionary.json
+    run: rm -rf ../public/model && mkdir ../public/model && tensorflowjs_converter --quantization_bytes 1 --input_format keras ./models/$@.h5 ../public/model/ && cp ./models/$@.json ../src/assets/dictionary.json
 
