@@ -28,7 +28,6 @@ class Layout extends React.Component{
                     </div> 
                     <div>
                         <Controller
-                            horoscopeOfDay = "it might be increasingly difficult to remain quiet about a particular matter you've been keeping to yourself or possibly feel strongly about you could be aware of the proverbial can of worms you'll open by instigating a particular conversation however you're only adding to your own stress levels by opting to say nothing if truth forms the basis of what you want to say then you have nothing to fear"
                         />
                     </div>   
                      
