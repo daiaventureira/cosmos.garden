@@ -16,6 +16,9 @@ commands:
   nb:
     desc: "Run jupyter notebooks"
     run: jupyter notebook
+  prep-gcmle:
+    desc: "Bundles custom code"
+    run: python ./setup.py sdist --formats=gztar
   tfjs:
     desc: "Convert to tfsj"
     run: rm -rf ../public/model && mkdir ../public/model && tensorflowjs_converter --quantization_bytes 1 --input_format keras ./models/$@.h5 ../public/model/ && cp ./models/$@.json ../src/assets/dictionary.json

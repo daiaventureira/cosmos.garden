@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "decent-vertex-280500",
+  "private_key_id": "ece7386348e519dad014b99424e5675eaa998b74",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCttbzP3TdtquVp\nXv6n1RFXgm2kP0Y0P4ICeZl0ySHndakvdTZ/28U1MWOnwr8swVzONFYEgU/ynAgJ\nPil06yrsbJePA0+nzPgMKRu86jkUpZofZN0ElqnNxvSfCnzxnPIkR9UKrNxf3tPA\nGj04V0m7Wz75FABMK5oo1o9PdLDUIfhV8y+3zns7+BJZupoA1S+pUNOjW4p1g1IP\nkhIDlR+IvWsTscST6ifOQmNOLTONfNDOGSewyv9aThMJ+xAP99B1KnQMWV8QM5er\nmpw+LSU6yVSvM6qbLUH4DjUxwlaHMloBrfAC4zSRp514pal55LnG0snyI1Ixtylg\nbs5Y9mU7AgMBAAECggEASMIIVaA4qSydbmcljrKF0vuEZPlDtHqtP9Ai4HGmS8ZS\nmNglfaRVk5QeQ5QkcuCCuLPfG3/2No34J7brslcV4XUSfgpLAOOvOZi2T4hjZCyA\nw4mBsXxRnykoKL1B3Al6uouDxjblDxrL4nibD9Avx9POKpGgFkdlCJnl6MfdkNv/\n9jUBTcANHk/bhDd2gNtkCseE9cqzXVd+1fWoVegJOHSFcpESChSzoEdjfMYrvrAA\nIz81HY0zpmUh++xS7P1MHWP2XMg9j9pGMZ4VQGSKPvv3N6K2atTm00+Do/u+dS5e\n5TVefO69z8fdBHbb1JBqoGoR0phlBmVWa8rcC9+8IQKBgQDqwbyS/v8mgJLAVr9A\nR0RuvlebqXYAoK+o/1HfN1qoIh7DMV3umG9Ozb+mjlWk1rve5MUtx/X+xTocaTN5\njRSbmS9gytbnDAADZPBXjIlmSOkdeCwGSlkvZKe1m90IVXuqJF4UAXVvp9oLMNw1\ncUGm/8F5Coij4VDurFHtNnkrqQKBgQC9bdF8L4SQtrlBomkq1Jyp9J7oW1adgkiD\nnXrWfhwlcGCQWokQNBUCjLpJEUyFGZy3A+BGHWjKTvniXK2PctN0LT9JyaVKADYi\nVNaPF7l4OHQRp0KZw017dFwxjMMOW6xQ0T3YJEv287XWp+vFNomaJZJBeST9X3eD\nHn4O7/s4QwKBgFqu5A1Ue3OADzBFUjOeVA0Dcgwrde3gJHr/xbyYQWjZZVC5bTOR\nps2mJPZN3T+Dw6bicFiy+Y+k2EHJUZ0OpntEvUyCjmlJ9WdaQo1POHROjd5YYYk8\nhx8Lns1EnClv/AlJax4HQjoTeOMByM7MJTRBb5c2Pnovu3e3ER61ADGhAoGAD4QH\nPJzHxvKwiee7pX50tpcKzQ1uMsiRF/a2MQtzUr25qxk/UMxzTBoqyAFauyw14ee3\nXwbZpniBj0D4Fl/ZYhKytGCH4V/TD0zTpjTTRD2bhDanBeExX4NQad6Vu39Wxefd\noO6YKkocAtEORsEI1E9vg11g4kAHkf3VZXPSp/ECgYAlOcsHYpsxkUqfeF5Z1WV+\n2LQ4kWs0nKvho96WFmkO3DUZX0Shd9PUJJSjg0mvHb5Bm7d3z8f2rbeyc3+8P7pV\nYt8q7457VgoldoxoP7FI3bT6Pb3HCm97zLJxIo12uTEKurrNbCVWLJ2ek4FwMcph\nvbMAyihpPH/jTrmBkMaqmw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "horoscope-user@decent-vertex-280500.iam.gserviceaccount.com",
+  "client_id": "101838920599412152033",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/horoscope-user%40decent-vertex-280500.iam.gserviceaccount.com"
+}

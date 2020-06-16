@@ -6,5 +6,5 @@ pandas
 numpy
 jupyterlab
 notebook
-tensorflow
+tensorflow==1.15
 tensorflowjs
