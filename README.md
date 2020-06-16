@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./public/logo192.png" width="30%"/>
+    <img src="./public/logo192.png" width="17%"/>
 </p>
 
 # Cosmos Garden
