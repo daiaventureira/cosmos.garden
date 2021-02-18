@@ -3,9 +3,6 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import Layout from "./components/Layout";
 import Loading from "./components/Loading";
-import PredictionWorker from "workerize-loader!./workers/predictor"; // eslint-disable-line import/no-webpack-loader-syntax
-import { JWT } from "google-auth-library";
-import keys from "./assets/jwt.keys.json";
 
 class App extends React.Component {
   constructor() {
