@@ -13,10 +13,9 @@ import { ReactComponent as Pisces } from "../assets/pisces.svg";
 import { ReactComponent as Gemini } from "../assets/gemini.svg";
 import { ReactComponent as Capricorn } from "../assets/capricorn.svg";
 import { ReactComponent as Aries } from "../assets/aries.svg";
-import Model from "../model/Model";
 
 class Controller extends Component {
-  state = { counter: 1, model: new Model() };
+  state = { counter: 1 };
 
   constructor() {
     super();
